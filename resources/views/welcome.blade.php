@@ -23,7 +23,6 @@
 @endsection
 
 @section('header')
-
 <header>
     <div class="container" id="maincontent" tabindex="-1">
         <div class="row">
@@ -37,8 +36,7 @@
             </div>
         </div>
     </div>
-</header>
-   
+</header>   
 @endsection
 
 @section('content')
