@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('trader_categories', 'TraderCategoryController')->except(['show']);
+
 Route::get('/home', 'HomeController@index')->name('home');

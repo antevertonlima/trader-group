@@ -1,27 +1,5 @@
 @extends('layouts.app')
 
-@section('menu-add-nav')
-<!-- Collect the nav links, forms, and other content for toggling -->
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    @if (Route::has('login'))
-        <ul class="nav navbar-nav navbar-right">
-            @auth
-                <li class="hidden">
-                    <a href="{{ url('/home') }}">Home</a>
-                </li>
-            @else
-                <li class="page-scroll">
-                    <a href="{{ route('login') }}">Login</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="{{ route('register') }}">Register</a>
-                </li>
-            @endauth        
-        </ul>
-    @endif
-</div>    
-@endsection
-
 @section('header')
 <header>
     <div class="container" id="maincontent" tabindex="-1">
