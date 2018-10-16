@@ -13,10 +13,16 @@ class TraderCategoryController extends Controller
     // ->except([
     //     'create', 'store', 'update', 'destroy'
     // ]
-    public function index()
-    {
+    
+    public function index(FormBuilder $formBuilder)
+    {   
+        $form_tradercategory = $formBuilder->create('App\Http\Forms\TraderCategory', [
+            'method' => 'POST',
+            'url' => route('trader_categories.store')
+        ]);
+
         $tradercategories = TraderCategory::paginate(10);
-        return view('layouts.partials.trader_categories.index', compact('tradercategories'));
+        return view('layouts.partials.trader_categories.index', compact('tradercategories','form_tradercategory'));
     }
 
     public function create(FormBuilder $formBuilder)
@@ -56,8 +62,11 @@ class TraderCategoryController extends Controller
         return redirect()->to($url);
     }
 
-    public function destroy()
+    public function destroy(Request $request, TraderCategory $trader_category)
     {
-        
+        $trader_category->delete();
+        $url = route('trader_categories.index');
+        $request->session()->flash('message', 'Algoritimo exclido com sucesso!');
+        return redirect()->to($url);
     }
 }

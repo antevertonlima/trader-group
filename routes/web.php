@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('trader_categories', 'TraderCategoryController')->except(['show']);
+Route::resource('trader_categories', 'TraderCategoryController')->except(['show','delete']);
+Route::get('trader_categories/{trader_category}', 'TraderCategoryController@destroy')->name('trader_categories.destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
